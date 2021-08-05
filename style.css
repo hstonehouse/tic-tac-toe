@@ -1,43 +1,69 @@
 * {
-    font-family: 'Bungee Shade', cursive;
-    max-width: 1000px;
+    font-family: 'Bungee Shade', cursive, 'Courier New', Courier, monospace;
+    box-sizing: border-box;
 }
 
-/* h1 {
-    font-family: 'Tourney', cursive;
-} */
+main {
+    margin: 0 auto;
+    width: 700px;
+}
 
-h1, .players {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    font-size: 50px;
+h1 {
+    font-family: 'Palette Mosaic', cursive;
+    font-size: 100px;
     text-align: center;
 }
 
 .container {
     display: flex;
-    width: 1000px;
     flex-wrap: wrap;
     justify-content: center;
-    
 }
 
 .container p {
-    width: 300px;
-    height: 300px;
+    flex-grow: 1;
     border: 1px solid black;
     text-align: center;
-    line-height: 300px;
-    font-size: 200px;
+    line-height: 190px;
+    font-size: 100px;
     margin: 10px;
+    height: 200px;
+    width: 200px;
 }
 
 .container .empty:hover {
     border: 5px solid yellow;
 }
 
+.players {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 50px;
+    text-align: center;
+}
+
 .players p {
-    display: inline;
-    border: 1px solid black;
+    display: flex;
     padding: 10px;
+    justify-content: center;
+    width: 435px;
+    margin-left: 135px;
+}
+
+#player-x {
+    border: 5px solid red;
+}
+
+button {
+    font-size: 50px;
+    margin-left: 155px;
+    margin-top: 90px;
+    padding: 15px;
+}
+
+@media (max-width: 900px) {
+    .players {
+        font-size: 30px;
+        display: block;
+    }
 }

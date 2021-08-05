@@ -1,9 +1,17 @@
 //Select all the boxes
 let boxes = document.querySelectorAll('.container .empty');
 
+for (let box of boxes) {
+    box.addEventListener("click", SquareClicked);
+}
+
 //Define the players
 let player1 = document.querySelector('#player-x');
 let player2 = document.querySelector('#player-o');
+
+//Select both players
+let players = document.querySelectorAll('.players p')
+
 
 //Define the individual boxes
 const box1 = document.getElementById('1');
@@ -26,6 +34,31 @@ function gameOver(){
     }
 }
 
+//Gives players the option to play another round
+function playAgain(){
+    for (let box of boxes) {
+        box.addEventListener("click", SquareClicked);
+        box.classList.add('empty');
+        box.classList.remove('full');
+        box.innerText = '';
+        box.style.removeProperty('background-color');
+        box.style.removeProperty('border');
+        box.style.color = 'black';
+    }
+    for (let player of players){
+        player.style.display = 'block';
+        player.style.fontSize = '50px';
+    }
+
+    player1.innerText = 'Player 1 = X'
+    player2.innerText = 'Player 2 = O'
+  
+}
+
+const button = document.querySelector('button');
+button.addEventListener("click", playAgain);
+
+//Player 1 Wins
 function player1Wins(a, b, c) {
     if (a.innerText === 'X' && b.innerText === 'X' && c.innerText === 'X') {
         a.style.color = 'white';
@@ -39,6 +72,8 @@ function player1Wins(a, b, c) {
         c.style.border = '1px solid green';
         player2.style.display = 'none';
         player1.innerText = 'PLAYER 1 WINS!!!'
+        player1.style.fontSize = '84px';
+        player1.style.border = 'none';
         for (let box of boxes) {
             box.classList.remove('empty');
         }
@@ -46,6 +81,7 @@ function player1Wins(a, b, c) {
     }
 }
 
+//Player 2 Wins
 function player2Wins(a, b, c) {
     if (a.innerText === 'O' && b.innerText === 'O' && c.innerText === 'O') {
         a.style.color = 'white';
@@ -59,6 +95,8 @@ function player2Wins(a, b, c) {
         c.style.border = '1px solid green';
         player1.style.display = 'none';
         player2.innerText = 'PLAYER 2 WINS!!!'
+        player2.style.fontSize = '84px';
+        player2.style.border = 'none';
         for (let box of boxes) {
             box.classList.remove('empty');
         }
@@ -101,14 +139,13 @@ function SquareClicked(event) {
     player2Wins(box4, box5, box6);
     player2Wins(box7, box8, box9);
     
+    //How the computer knows when there has been a draw
     const fullBoxes = document.querySelectorAll('.full');
     
     if (fullBoxes.length === 9){
-        console.log("It's a draw!");
+        player1.style.display = 'none';
+        player2.innerText = "IT'S A DRAW!"
+        player2.style.border = 'none';
         gameOver();
     }
-}
-
-for (let box of boxes) {
-    box.addEventListener("click", SquareClicked);
 }
