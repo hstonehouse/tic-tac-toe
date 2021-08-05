@@ -35,6 +35,8 @@ function gameOver(){
 }
 
 //Gives players the option to play another round
+const button = document.querySelector('button');
+
 function playAgain(){
     for (let box of boxes) {
         box.addEventListener("click", SquareClicked);
@@ -52,24 +54,21 @@ function playAgain(){
 
     player1.innerText = 'Player 1 = X'
     player2.innerText = 'Player 2 = O'
+    button.style.display = 'none';
   
 }
 
-const button = document.querySelector('button');
 button.addEventListener("click", playAgain);
 
 //Player 1 Wins
 function player1Wins(a, b, c) {
+    let winArray = [a, b, c];
     if (a.innerText === 'X' && b.innerText === 'X' && c.innerText === 'X') {
-        a.style.color = 'white';
-        a.style.backgroundColor = 'green';
-        a.style.border = '1px solid green';
-        b.style.color = 'white';
-        b.style.backgroundColor = 'green';
-        b.style.border = '1px solid green';
-        c.style.color = 'white';
-        c.style.backgroundColor = 'green';
-        c.style.border = '1px solid green';
+         for (let item of winArray){
+            item.style.color = 'white';
+            item.style.backgroundColor = 'green';
+            item.style.border = '1px solid green';
+        }
         player2.style.display = 'none';
         player1.innerText = 'PLAYER 1 WINS!!!'
         player1.style.fontSize = '84px';
@@ -78,21 +77,19 @@ function player1Wins(a, b, c) {
             box.classList.remove('empty');
         }
         gameOver();
+        button.style.display = 'block';
     }
 }
 
 //Player 2 Wins
 function player2Wins(a, b, c) {
+    let winArray = [a, b, c];
     if (a.innerText === 'O' && b.innerText === 'O' && c.innerText === 'O') {
-        a.style.color = 'white';
-        a.style.backgroundColor = 'green';
-        a.style.border = '1px solid green';
-        b.style.color = 'white';
-        b.style.backgroundColor = 'green';
-        b.style.border = '1px solid green';
-        c.style.color = 'white';
-        c.style.backgroundColor = 'green';
-        c.style.border = '1px solid green';
+        for (let item of winArray){
+            item.style.color = 'white';
+            item.style.backgroundColor = 'green';
+            item.style.border = '1px solid green';
+        }
         player1.style.display = 'none';
         player2.innerText = 'PLAYER 2 WINS!!!'
         player2.style.fontSize = '84px';
@@ -101,6 +98,7 @@ function player2Wins(a, b, c) {
             box.classList.remove('empty');
         }
         gameOver();
+        button.style.display = 'block';
     }
 }
 
