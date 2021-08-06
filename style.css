@@ -4,7 +4,9 @@
 }
 /* There was a margin on the body which pushed everything slightly to the right so I had to get rid of it*/
 body {
+    min-height: 100vh;
     margin: 0;
+    background: linear-gradient(rgba(221, 70, 38), rgba(243, 190, 59, .8));
 }
 
 main {
@@ -38,8 +40,9 @@ h1 {
 
 #scoreboard-header-player, #scoreboard-header-score, #X, #player-x-score, #O, #player-o-score {
     font-size: 40px;
+    color: white;
     font-family: 'Courier New', Courier, monospace;
-    border: 1px solid black;
+    border: 1px solid white;
     text-align: center;
     margin: 0;
     padding-top: 10px;
