@@ -1,8 +1,9 @@
 //Select all the boxes
 let boxes = document.querySelectorAll('.container .empty');
 
+//Loop through the boxes to check if one has been clicked
 for (let box of boxes) {
-    box.addEventListener("click", SquareClicked);
+    box.addEventListener("click", BoxClicked);
 }
 
 //Define the players
@@ -12,6 +13,12 @@ let player2 = document.querySelector('#player-o');
 //Select both players
 let players = document.querySelectorAll('.players p')
 
+//Select the player scores
+let playerXScoreElement = document.querySelector('#player-x-score');
+let playerOScoreElement = document.querySelector('#player-o-score');
+
+let playerXScore = 0;
+let playerOScore = 0;
 
 //Define the individual boxes
 const box1 = document.getElementById('1');
@@ -27,82 +34,9 @@ const box9 = document.getElementById('9');
 //The game starts with player 1 (X)
 let currentPlayer = 1;
 
-//When the game is over, the squares are unabled to be clicked
-function gameOver(){
-    for (let box of boxes) {
-        box.removeEventListener("click", SquareClicked);
-    }
-}
 
-//Gives players the option to play another round
-const button = document.querySelector('button');
-
-function playAgain(){
-    for (let box of boxes) {
-        box.addEventListener("click", SquareClicked);
-        box.classList.add('empty');
-        box.classList.remove('full');
-        box.innerText = '';
-        box.style.removeProperty('background-color');
-        box.style.removeProperty('border');
-        box.style.color = 'black';
-    }
-    for (let player of players){
-        player.style.display = 'block';
-        player.style.fontSize = '50px';
-    }
-
-    player1.innerText = 'Player 1 = X'
-    player2.innerText = 'Player 2 = O'
-    button.style.display = 'none';
-  
-}
-
-button.addEventListener("click", playAgain);
-
-//Player 1 Wins
-function player1Wins(a, b, c) {
-    let winArray = [a, b, c];
-    if (a.innerText === 'X' && b.innerText === 'X' && c.innerText === 'X') {
-         for (let item of winArray){
-            item.style.color = 'white';
-            item.style.backgroundColor = 'green';
-            item.style.border = '1px solid green';
-        }
-        player2.style.display = 'none';
-        player1.innerText = 'PLAYER 1 WINS!!!'
-        player1.style.fontSize = '84px';
-        player1.style.border = 'none';
-        for (let box of boxes) {
-            box.classList.remove('empty');
-        }
-        gameOver();
-        button.style.display = 'block';
-    }
-}
-
-//Player 2 Wins
-function player2Wins(a, b, c) {
-    let winArray = [a, b, c];
-    if (a.innerText === 'O' && b.innerText === 'O' && c.innerText === 'O') {
-        for (let item of winArray){
-            item.style.color = 'white';
-            item.style.backgroundColor = 'green';
-            item.style.border = '1px solid green';
-        }
-        player1.style.display = 'none';
-        player2.innerText = 'PLAYER 2 WINS!!!'
-        player2.style.fontSize = '84px';
-        player2.style.border = 'none';
-        for (let box of boxes) {
-            box.classList.remove('empty');
-        }
-        gameOver();
-        button.style.display = 'block';
-    }
-}
-
-function SquareClicked(event) {
+//Define what happens when someone clicks a box
+function BoxClicked(event) {
     if (currentPlayer === 1 && event.target.className === 'empty') {
         player1.style.border = '1px solid black';
         player2.style.border = '5px solid red';
@@ -119,6 +53,7 @@ function SquareClicked(event) {
         currentPlayer = 1;
     }
 
+    //Check if anyone has won
     player1Wins(box1, box2, box3);
     player1Wins(box1, box4, box7);
     player1Wins(box1, box5, box9);
@@ -136,14 +71,97 @@ function SquareClicked(event) {
     player2Wins(box3, box6, box9);
     player2Wins(box4, box5, box6);
     player2Wins(box7, box8, box9);
+
+
+//Player 1 Wins
+function player1Wins(a, b, c) {
+    let winArray = [a, b, c];
+    if (a.innerText === 'X' && b.innerText === 'X' && c.innerText === 'X') {
+         for (let item of winArray){
+            item.style.color = 'white';
+            item.style.backgroundColor = 'rgb(24, 184, 173)';
+            item.style.border = '1px solid rgb(24, 184, 173)';
+        }
+        player2.style.display = 'none';
+        player1.innerText = 'PLAYER 1 WINS!'
+        player1.style.fontSize = '84px';
+        player1.style.border = 'none';
+        for (let box of boxes) {
+            box.classList.remove('empty');
+        }
+        playerXScore += 1;
+        playerXScoreElement.innerText = playerXScore;
+        gameOver();
+        button.style.display = 'block';
+    }
+}
+
+
+//Player 2 Wins
+function player2Wins(a, b, c) {
+    let winArray = [a, b, c];
+    if (a.innerText === 'O' && b.innerText === 'O' && c.innerText === 'O') {
+        for (let item of winArray){
+            item.style.color = 'white';
+            item.style.backgroundColor = 'rgb(24, 184, 173)';
+            item.style.border = '1px solid rgb(24, 184, 173)';
+        }
+        player1.style.display = 'none';
+        player2.innerText = 'PLAYER 2 WINS!'
+        player2.style.fontSize = '84px';
+        player2.style.border = 'none';
+        for (let box of boxes) {
+            box.classList.remove('empty');
+        }
+        playerOScore += 1;
+        playerOScoreElement.innerText = playerOScore;
+        gameOver();
+        button.style.display = 'block';
+    }
+}
+
     
-    //How the computer knows when there has been a draw
-    const fullBoxes = document.querySelectorAll('.full');
+//How the computer knows when there has been a draw
+const fullBoxes = document.querySelectorAll('.full');
     
     if (fullBoxes.length === 9){
         player1.style.display = 'none';
         player2.innerText = "IT'S A DRAW!"
         player2.style.border = 'none';
+        player2.style.fontSize = '84px';
         gameOver();
+        button.style.display = 'block';
     }
 }
+
+//When the game is over, the squares are unabled to be clicked
+function gameOver(){
+    for (let box of boxes) {
+        box.removeEventListener("click", BoxClicked);
+    }
+}
+
+//Gives players the option to play another round
+const button = document.querySelector('button');
+button.addEventListener("click", playAgain);
+
+function playAgain(){
+    for (let box of boxes) {
+        box.addEventListener("click", BoxClicked);
+        box.classList.add('empty');
+        box.classList.remove('full');
+        box.innerText = '';
+        box.style.removeProperty('background-color');
+        box.style.removeProperty('border');
+        box.style.color = 'black';
+    }
+    for (let player of players){
+        player.style.display = 'block';
+        player.style.fontSize = '50px';
+    }
+
+    player1.innerText = 'Player 1 = X'
+    player2.innerText = 'Player 2 = O'
+    button.style.display = 'none'; 
+}
+

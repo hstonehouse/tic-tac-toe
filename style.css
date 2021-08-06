@@ -2,16 +2,86 @@
     font-family: 'Bungee Shade', cursive, 'Courier New', Courier, monospace;
     box-sizing: border-box;
 }
+/* There was a margin on the body which pushed everything slightly to the right so I had to get rid of it*/
+body {
+    margin: 0;
+}
 
 main {
     margin: 0 auto;
     width: 700px;
+  
 }
 
 h1 {
     font-family: 'Palette Mosaic', cursive;
     font-size: 100px;
     text-align: center;
+    margin-bottom: 75px;
+    background-color: navy;
+    color: magenta;
+    padding: 10px 20px 20px 20px;
+}
+
+
+.scoreboard {
+    width: 500px;
+    height: 200px;
+    margin-bottom: 45px;
+    margin-left: 103px;
+    display: grid;
+    grid-template-areas:
+    "header1 header2"
+    "X playerxscore"
+    "O playeroscore"
+}
+
+#scoreboard-header-player, #scoreboard-header-score, #X, #player-x-score, #O, #player-o-score {
+    font-size: 40px;
+    font-family: 'Courier New', Courier, monospace;
+    border: 1px solid black;
+    text-align: center;
+    margin: 0;
+    padding-top: 10px;
+}
+
+#scoreboard-header-player {
+    grid-area: header1;
+    border-right: 0;
+    border-left: 0;
+    border-top: 0;
+}
+
+#scoreboard-header-score {
+    grid-area: header2;
+     border-top: 0;
+     border-right: 0;
+}
+
+#X {
+    grid-area: X;
+    border-bottom: 0;
+    border-right: 0;
+    border-left: 0;
+}
+
+#player-x-score {
+    grid-area: playerxscore;
+    border-bottom: 0;
+    border-right: 0;
+}
+
+#O {
+    grid-area: O;
+    border-right: 0;
+    border-left: 0;
+    border-bottom: 0;
+}
+
+#player-o-score {
+    grid-area: playeroscore;
+    border-right: 0;
+    border-bottom: 0;
 }
 
 .container {
@@ -55,11 +125,19 @@ h1 {
 }
 
 button {
-    font-size: 50px;
-    margin-left: 155px;
+    font-size: 60px;
+    margin-left: 113px;
     margin-top: 90px;
     padding: 15px;
     display: none;
+    color: red;
+    border: 6px solid red;
+    margin-bottom: 55px;
+}
+
+button:hover {
+    color: white;
+    background-color: red;
 }
 
 @media (max-width: 900px) {
