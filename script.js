@@ -11,12 +11,13 @@ let player1 = document.querySelector('#player-x');
 let player2 = document.querySelector('#player-o');
 
 //Select both players
-let players = document.querySelectorAll('.players p')
+let players = document.querySelectorAll('.players p');
 
-//Select the player scores
+//Select the player score DOM elements
 let playerXScoreElement = document.querySelector('#player-x-score');
 let playerOScoreElement = document.querySelector('#player-o-score');
 
+//Save the player scores in a variable to use when updating the DOM element inner text
 let playerXScore = 0;
 let playerOScore = 0;
 
@@ -73,7 +74,7 @@ function BoxClicked(event) {
     player2Wins(box7, box8, box9);
 
 
-//Player 1 Wins
+//How the computer knows that player 1 has won
 function player1Wins(a, b, c) {
     let winArray = [a, b, c];
     if (a.innerText === 'X' && b.innerText === 'X' && c.innerText === 'X') {
@@ -92,12 +93,14 @@ function player1Wins(a, b, c) {
         playerXScore += 1;
         playerXScoreElement.innerText = playerXScore;
         gameOver();
+
+        //Play Again button appears
         button.style.display = 'block';
     }
 }
 
 
-//Player 2 Wins
+//How the computer knows that player 2 has won
 function player2Wins(a, b, c) {
     let winArray = [a, b, c];
     if (a.innerText === 'O' && b.innerText === 'O' && c.innerText === 'O') {
@@ -116,6 +119,8 @@ function player2Wins(a, b, c) {
         playerOScore += 1;
         playerOScoreElement.innerText = playerOScore;
         gameOver();
+
+        //Play Again button appears
         button.style.display = 'block';
     }
 }
@@ -130,6 +135,8 @@ const fullBoxes = document.querySelectorAll('.full');
         player2.style.border = 'none';
         player2.style.fontSize = '84px';
         gameOver();
+
+        //Play Again button appears
         button.style.display = 'block';
     }
 }
@@ -141,7 +148,7 @@ function gameOver(){
     }
 }
 
-//Gives players the option to play another round
+//Play Again button - Gives players the option to play another round
 const button = document.querySelector('button');
 button.addEventListener("click", playAgain);
 
@@ -162,6 +169,8 @@ function playAgain(){
 
     player1.innerText = 'Player 1 = X'
     player2.innerText = 'Player 2 = O'
+
+    //Button disappears after being clicked
     button.style.display = 'none'; 
 }
 

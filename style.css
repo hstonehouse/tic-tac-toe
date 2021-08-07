@@ -2,7 +2,7 @@
     font-family: 'Bungee Shade', cursive, 'Courier New', Courier, monospace;
     box-sizing: border-box;
 }
-/* There was a margin on the body which pushed everything slightly to the right so I had to get rid of it*/
+/* There was a margin on the body which pushed everything slightly to the right so I had to get rid of it */
 body {
     min-height: 100vh;
     margin: 0;
@@ -12,7 +12,6 @@ body {
 main {
     margin: 0 auto;
     width: 700px;
-  
 }
 
 h1 {
@@ -25,7 +24,7 @@ h1 {
     padding: 10px 20px 20px 20px;
 }
 
-
+/* The scoreboard section */
 .scoreboard {
     width: 500px;
     height: 200px;
@@ -87,6 +86,7 @@ h1 {
     border-bottom: 0;
 }
 
+/* The tic-tac-toe gameboard section */
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -104,6 +104,7 @@ h1 {
     width: 200px;
 }
 
+/* You are only able to hover over the box if it is empty */
 .container .empty:hover {
     border: 5px solid yellow;
 }
@@ -123,10 +124,12 @@ h1 {
     margin-left: 135px;
 }
 
+/* The game starts with player 1, so their box is highlighted red */
 #player-x {
     border: 5px solid red;
 }
 
+/* The button is hidden until the game is over */
 button {
     font-size: 60px;
     margin-left: 113px;
