@@ -21,7 +21,8 @@ let playerOScoreElement = document.querySelector('#player-o-score');
 let playerXScore = 0;
 let playerOScore = 0;
 
-//Is game over
+// variables to track state after the game is done
+// We do different things based on what caused the end of the game
 let isGameOver = false;
 let wasWinner = false;
 
@@ -191,4 +192,3 @@ function playAgain() {
     //Button disappears after being clicked
     button.style.display = 'none';
 }
-
