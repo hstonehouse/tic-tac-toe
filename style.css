@@ -120,8 +120,8 @@ h1 {
     display: flex;
     padding: 10px;
     justify-content: center;
-    width: 446px;
-    margin-left: 135px;
+    width: 450px;
+    margin-left: 120px;
 }
 
 /* The game starts with player 1, so their box is highlighted red */
