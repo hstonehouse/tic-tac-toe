@@ -108,7 +108,6 @@ function BoxClicked(event) {
             }
             player2.style.display = 'none';
             player1.innerText = 'PLAYER 1 WINS!'
-            player1.style.fontSize = '84px';
             player1.style.border = 'none';
             for (let box of boxes) {
                 box.classList.remove('empty');
@@ -138,7 +137,6 @@ function BoxClicked(event) {
             }
             player1.style.display = 'none';
             player2.innerText = 'PLAYER 2 WINS!'
-            player2.style.fontSize = '84px';
             player2.style.border = 'none';
             for (let box of boxes) {
                 box.classList.remove('empty');
@@ -183,7 +181,6 @@ function playAgain() {
     }
     for (let player of players) {
         player.style.display = 'block';
-        player.style.fontSize = '50px';
     }
 
     player1.innerText = 'Player 1 = X'
