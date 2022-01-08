@@ -84,7 +84,6 @@ function BoxClicked(event) {
          
          player2.innerText = "IT'S A DRAW!"
          player2.style.border = 'none';
-         player2.style.fontSize = '84px';
          gameOver();
          wasWinner = false;
  
